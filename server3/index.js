@@ -4,7 +4,9 @@ const app = express();
 
 const users = [
   { id: 1, name: "Arjun", role: "student" },
-  { id: 2, name: "Priyesha", role: "mentor" }
+  { id: 2, name: "Priyesha", role: "mentor" },
+  { id: 3, name: "Devilal", role: "rockstar" },
+  { id: 4, name: "Nitish", role: "mentor" }
 ];
 
 app.get("/", (req, res) => {
@@ -33,6 +35,6 @@ app.get("/users/:id", (req, res) => {
   res.status(200).json(user);
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log("Server started on port 3000");
 });
