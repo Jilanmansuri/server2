@@ -87,6 +87,26 @@ app.put("/users/:id", (req, res) => {
 
 
 
+app.patch("/users/:id", (req, res) => {
+  const userId = Number(req.params.id);
+  const user = users.find(u => u.id === userId);
+
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  if (req.body.name) user.name = req.body.name;
+  if (req.body.role) user.role = req.body.role;
+
+  res.status(200).json({
+    message: "User updated",
+    user
+  });
+});
+
+
+
+
 
 app.delete("/users/:id", (req, res) => {
   const userId = Number(req.params.id);
