@@ -98,6 +98,7 @@ app.patch("/users/:id", (req, res) => {
   if (req.body.name) user.name = req.body.name;
   if (req.body.role) user.role = req.body.role;
 
+  
   res.status(200).json({
     message: "User updated",
     user
