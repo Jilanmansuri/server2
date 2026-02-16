@@ -56,6 +56,32 @@ app.post("/users", (req, res) => {
 
 
 
+app.put("/users/:id", (req, res) => {
+
+  console.log("body: ", req.body);
+  console.log("params: ", req.params);
+
+  const userId = Number(req.params.id);
+  const index = users.findIndex(u => u.id === userId);
+
+
+  if (index === -1) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  users[index] = {
+    id: userId,
+    name: req.body.name,
+    role: req.body.role,
+    age: req.body.age
+  };
+
+  res.status(200).json({
+    message: "User replaced",
+    user: users[index]
+  });
+
+});
 
 
 
