@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 app.use(express.json())
+
 const users = [
   { id: 1, name: "Arjun", role: "student" },
   { id: 2, name: "Priyesha", role: "mentor" }
