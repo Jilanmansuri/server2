@@ -85,7 +85,6 @@ app.put("/users/:id", (req, res) => {
 
 
 
-
 app.patch("/users/:id", (req, res) => {
   const userId = Number(req.params.id);
   const user = users.find(u => u.id === userId);
