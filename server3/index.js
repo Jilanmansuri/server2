@@ -6,6 +6,7 @@ const users = [
   { id: 2, name: "Priyesha", role: "mentor" }
 ];
 
+
 app.get("/", (req, res) => {
   res.send("Express server is running");
 });
