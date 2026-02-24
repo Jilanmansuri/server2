@@ -142,7 +142,6 @@ app.delete("/users/:id", (req, res) => {
 
 
 
-
 app.delete("/user/:name", (req, res) => {
   const userName = req.params.name;
   const index = users.findIndex(
