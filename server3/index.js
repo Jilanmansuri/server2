@@ -137,7 +137,6 @@ app.delete("/users/:id", (req, res) => {
   }
 
   users.splice(index, 1);
-
   res.status(204).end();
 });
 
