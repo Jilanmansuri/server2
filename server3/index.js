@@ -98,12 +98,35 @@ app.patch("/users/:id", (req, res) => {
   if (req.body.name) user.name = req.body.name;
   if (req.body.role) user.role = req.body.role;
 
-  
+
   res.status(200).json({
     message: "User updated",
     user
   });
 });
+
+
+
+app.patch("/user/:name", (req, res) => {
+  const userName = req.params.name;
+
+  const user = users.find(
+    u => u.name.toLowerCase() === userName.toLowerCase()
+  );
+
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  if (req.body.name) user.name = req.body.name;
+  if (req.body.role) user.role = req.body.role;
+
+  res.status(200).json({
+    message: "User updated by name",
+    user
+  });
+});
+
 
 
 
@@ -120,6 +143,28 @@ app.delete("/users/:id", (req, res) => {
   users.splice(index, 1);
 
   res.status(204).end();
+});
+
+
+
+
+app.delete("/user/:name", (req, res) => {
+  const userName = req.params.name;
+
+  const index = users.findIndex(
+    u => u.name.toLowerCase() === userName.toLowerCase()
+  );
+
+  if (index === -1) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  const deletedUser = users.splice(index, 1);
+
+  res.status(204).json({
+    message: "User deleted by name",
+    user: deletedUser[0]
+  });
 });
 
 
