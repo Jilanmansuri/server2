@@ -63,7 +63,6 @@ app.put("/users/:id", (req, res) => {
   const userId = Number(req.params.id);
   const index = users.findIndex(u => u.id === userId);
 
-
   if (index === -1) {
     return res.status(404).json({ message: "User not found" });
   }
